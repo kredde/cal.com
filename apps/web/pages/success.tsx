@@ -317,7 +317,7 @@ export default function Success(props: SuccessProps) {
                               isReschedule={reschedule === "true"}
                               eventType={props.eventType}
                               recurringBookings={props.recurringBookings}
-                              date={new Date(date)}
+                              date={dayjs(date)}
                               is24h={is24h}
                             />
                           </div>
