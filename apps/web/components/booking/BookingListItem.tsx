@@ -34,7 +34,7 @@ type BookingItemProps = BookingItem & {
 function BookingListItem(booking: BookingItemProps) {
   // Get user so we can determine 12/24 hour format preferences
   const query = useMeQuery();
-  const user = query.data;
+  const user: any = query.data;
   const { t, i18n } = useLocale();
   const utils = trpc.useContext();
   const [rejectionReason, setRejectionReason] = useState<string>("");
