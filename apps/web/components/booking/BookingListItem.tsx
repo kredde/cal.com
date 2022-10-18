@@ -198,15 +198,15 @@ function BookingListItem(booking: BookingItemProps) {
         <td className="hidden whitespace-nowrap py-4 align-top ltr:pl-6 rtl:pr-6 sm:table-cell sm:w-56">
           <div className="text-sm leading-6 text-gray-900">{startTime}</div>
           <div className="text-sm text-gray-500">
-           {dayjs
-                .utc(booking.startTime)
-                .utcOffset(utcOffset)
-                .format(user && user.timeFormat === 12 ? "h:mma" : "HH:mm")}{" "}
-              -{" "}
-              {dayjs
-                .utc(booking.endTime)
-                .utcOffset(utcOffset)
-                .format(user && user.timeFormat === 12 ? "h:mma" : "HH:mm")}
+            {dayjs
+              .utc(booking.startTime)
+              .utcOffset(utcOffset)
+              .format(user && user.timeFormat === 12 ? "h:mma" : "HH:mm")}{" "}
+            -{" "}
+            {dayjs
+              .utc(booking.endTime)
+              .utcOffset(utcOffset)
+              .format(user && user.timeFormat === 12 ? "h:mma" : "HH:mm")}
           </div>
           <div className="text-sm text-gray-400">
             {booking.recurringCount &&
@@ -248,7 +248,7 @@ function BookingListItem(booking: BookingItemProps) {
             <div className="text-sm font-medium text-gray-900">
               {startTime}:{" "}
               <small className="text-sm text-gray-500">
-                 {dayjs
+                {dayjs
                   .utc(booking.startTime)
                   .utcOffset(utcOffset)
                   .format(user && user.timeFormat === 12 ? "h:mma" : "HH:mm")}{" "}
