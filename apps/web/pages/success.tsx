@@ -544,45 +544,9 @@ function RecurringBookings({
   date,
   is24h,
 }: RecurringBookingsProps) {
-  const [moreEventsVisible, setMoreEventsVisible] = useState(false);
   const { t } = useLocale();
-  return !isReschedule && recurringBookings ? (
-    <>
-      {eventType.recurringEvent?.count &&
-        recurringBookings.slice(0, 4).map((dateStr, idx) => (
-          <div key={idx} className="mb-2">
-            {dayjs(dateStr).format("MMMM DD, YYYY")}
-            <br />
-            {dayjs(dateStr).format("LT")} - {dayjs(dateStr).add(eventType.length, "m").format("LT")}{" "}
-            <span className="text-bookinglight">
-              ({localStorage.getItem("timeOption.preferredTimeZone") || dayjs.tz.guess()})
-            </span>
-          </div>
-        ))}
-      {recurringBookings.length > 4 && (
-        <Collapsible open={moreEventsVisible} onOpenChange={() => setMoreEventsVisible(!moreEventsVisible)}>
-          <CollapsibleTrigger
-            type="button"
-            className={classNames("flex w-full", moreEventsVisible ? "hidden" : "")}>
-            {t("plus_more", { count: recurringBookings.length - 4 })}
-          </CollapsibleTrigger>
-          <CollapsibleContent>
-            {eventType.recurringEvent?.count &&
-              recurringBookings.slice(4).map((dateStr, idx) => (
-                <div key={idx} className="mb-2">
-                  {dayjs(dateStr).format("MMMM DD, YYYY")}
-                  <br />
-                  {dayjs(dateStr).format("LT")} - {dayjs(dateStr).add(eventType.length, "m").format("LT")}{" "}
-                  <span className="text-bookinglight">
-                    ({localStorage.getItem("timeOption.preferredTimeZone") || dayjs.tz.guess()})
-                  </span>
-                </div>
-              ))}
-          </CollapsibleContent>
-        </Collapsible>
-      )}
-    </>
-  ) : !eventType.recurringEvent.freq ? (
+
+  return (
     <>
       {date.format("MMMM DD, YYYY")}
       <br />
@@ -591,7 +555,7 @@ function RecurringBookings({
         ({localStorage.getItem("timeOption.preferredTimeZone") || dayjs.tz.guess()})
       </span>
     </>
-  ) : null;
+  );
 }
 
 const getEventTypesFromDB = async (typeId: number) => {
