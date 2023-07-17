@@ -21,6 +21,6 @@
     "NEXTAUTH_SECRET": "secret"
   },
   "scripts": {
-    "postdeploy": "cd packages/prisma && npx prisma migrate deploy"
+    "postdeploy": "cd packages/prisma && npx prisma@^3.13.0 migrate deploy"
   }
 }
